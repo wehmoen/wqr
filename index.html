@@ -18,13 +18,12 @@
     <script>
     $(function() {
     	var baseURL = "http://api.qrserver.com/v1/create-qr-code/?";
+        var from = $("#from");
     	$("[data-id='submit']").click(function() {
-    		$("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":$("[data-id='from']").val(),"eec":"H","format":"svg"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
-    		$("#recent").append("<img src=\"" + baseURL + $.param({"size":"256x256","data":$("[data-id='from']").val(),"eec":"H","format":"svg"}) + "\" width=\"128\" height=\"128\" title=\"" + $("[data-id='from']").val() + "\" style=\"margin: 5px;\"/>");
-
-    	});
+    		$("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
+    		$("#recent").append("<img class=\"old\"src=\"" + baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"}) + "\" width=\"128\" height=\"128\" title=\"" + from.val() + "\" style=\"margin: 5px; cursor: pointer;\" onclick=\"$('#from').val($(this).attr('title'));\"/>");
+    	});      
     });
-
 
     </script>
 
@@ -32,7 +31,7 @@
 <body>
 <fieldset id="main">
 <label for="main">QR-Code Generator</label>
-<p>URL/TEXT: <input type="text" data-id="from" style="width:100%;"></p>
+<p>URL/TEXT: <input type="text" id="from" data-id="from" style="width:100%;"></p>
 <p><button data-id="submit">Weiter...</button></p>
 </fieldset>
 <fieldset data-id="qr" style="display:none;">
