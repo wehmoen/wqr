@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="qrg by wehmoen@github/wehmoen/qrg">
+    <meta name="author" content="wehmoen">
+    <meta name="version" content="1.0.0">
+
+    <title>QR Code Generator</title>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <script>
+    $(function() {
+    	var baseURL = "http://api.qrserver.com/v1/create-qr-code/?";
+    	$("[data-id='submit']").click(function() {
+    		$("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":$("[data-id='from']").val(),"eec":"H","format":"svg"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
+    		$("#recent").append("<img src=\"" + baseURL + $.param({"size":"256x256","data":$("[data-id='from']").val(),"eec":"H","format":"svg"}) + "\" width=\"128\" height=\"128\" title=\"" + $("[data-id='from']").val() + "\" style=\"margin: 5px;\"/>");
+
+    	});
+    });
+
+
+    </script>
+
+</head>
+<body>
+<fieldset id="main">
+<label for="main">QR-Code Generator</label>
+<p>URL/TEXT: <input type="text" data-id="from" style="width:100%;"></p>
+<p><button data-id="submit">Weiter...</button></p>
+</fieldset>
+<fieldset data-id="qr" style="display:none;">
+<div align="center"><img data-id="qr-image"></div>
+<div id="recent">
+	<h2>Recently generated</h2>
+</div>
+</fieldset>
+</body>
