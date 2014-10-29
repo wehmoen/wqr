@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="qrg by wehmoen@github/wehmoen/qrg">
+    <meta name="description" content="wqr by wehmoen@github/wehmoen/wqr">
     <meta name="author" content="wehmoen">
-    <meta name="version" content="1.0.0">
+    <meta name="version" content="1.1.0">
 
     <title>QR Code Generator</title>
 
@@ -20,8 +20,10 @@
     	var baseURL = "http://api.qrserver.com/v1/create-qr-code/?";
         var from = $("#from");
     	$("[data-id='submit']").click(function() {
-    		$("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
-    		$("#recent").append("<img class=\"old\"src=\"" + baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"}) + "\" width=\"128\" height=\"128\" title=\"" + from.val() + "\" style=\"margin: 5px; cursor: pointer;\" onclick=\"$('#from').val($(this).attr('title'));\"/>");
+    		//display current QR Code
+            $("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
+            //add current QR Code to history and make it clickable
+    		$("#recent").append("<img src=\"" + baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"}) + "\" width=\"128\" height=\"128\" title=\"" + from.val() + "\" style=\"margin: 5px; cursor: pointer;\" onclick=\"$('#from').val($(this).attr('title'));\"/>");
     	});      
     });
 
