@@ -21,9 +21,9 @@
         var from = $("#from");
     	$("[data-id='submit']").click(function() {
     		//display current QR Code
-            $("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
+            $("[data-id='qr']").css("display","block").children("div").children("img[data-id='qr-image']").attr("src",baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"png"})).attr("title",$("[data-id='from']").val()).css({"width":"256px","height":"256px"});
             //add current QR Code to history and make it clickable
-    		$("#recent").append("<img src=\"" + baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"svg"}) + "\" width=\"128\" height=\"128\" title=\"" + from.val() + "\" style=\"margin: 5px; cursor: pointer;\" onclick=\"$('#from').val($(this).attr('title'));\"/>");
+    		$("#recent").append("<img src=\"" + baseURL + $.param({"size":"256x256","data":from.val(),"eec":"H","format":"png"}) + "\" width=\"128\" height=\"128\" title=\"" + from.val() + "\" style=\"margin: 5px; cursor: pointer;\" onclick=\"$('#from').val($(this).attr('title'));\"/>");
     	});      
     });
 
