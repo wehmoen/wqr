@@ -16,6 +16,12 @@
     <script src="js/jquery-1.11.0.js"></script>
 
     <script>
+    function info() {
+    	console.log("APP NAME: wqr");
+    	console.log("APP VERSION: 1.1.4");
+    	console.log("APP AUTHOR: wehmoen");
+    	console.log("APP AUTHOR URL: https://github.com/wehmoen/");
+    }
     $(function() {
     	var baseURL = "https://api.qrserver.com/v1/create-qr-code/?";
         var from = $("#from");
@@ -39,7 +45,7 @@
 <fieldset data-id="qr" style="display:none;">
 <div align="center"><img data-id="qr-image"></div>
 <div id="recent">
-	<h2>Recently generated</h2>
+	<h2>History</h2>
 </div>
 </fieldset>
 </body>
